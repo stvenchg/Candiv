@@ -29,7 +29,7 @@ class ViewAuth extends GenericView
                     <label>Adresse e-mail</label>
                     <input type="email" name="email" id="email" placeholder="steven@exemple.com">
 
-                    <button class="login-button">Continuer</button>
+                    <button type="submit" class="login-button" id="checkButton" disabled>Continuer</button>
                 </form>
             </div>
         </div>';
@@ -47,10 +47,10 @@ class ViewAuth extends GenericView
 
         if (!isset($_SESSION['login'])) {
             echo '
-        <div class="auth">
+        <div class="auth animate__animated animate__fadeIn animate__faster">
             <div class="page-title">
-                <h1>Finalisez votre inscription</h1>
-                <p>Il semblerait que vous n\'ayez pas encore de compte sur Candiv.<br>Merci de renseigner le formulaire ci-dessous afin de finaliser votre inscription.</p>
+                <h1>Créer un compte</h1>
+                <p>Il semblerait que vous n\'ayez pas encore de compte sur Candiv.<br>Merci de renseigner les informations ci-dessous afin de vous inscrire.</p>
             </div>
             <div id="auth-form" class="auth-form">
                 <form action="./?module=auth&action=sendCheck" method="POST">
@@ -76,6 +76,9 @@ class ViewAuth extends GenericView
                     <button class="login-button">Continuer</button>
                 </form>
             </div>
+            <div class="page-title">
+                <p>Une erreur de saisie ? <a href="./?module=auth">Revenir en arrière</a>.</p>
+            </div>
         </div>';
         } else {
             echo "Already connected!";
@@ -87,21 +90,29 @@ class ViewAuth extends GenericView
 
         global $title;
         $title ='Se connecter sur Candiv';
+        $email = isset($_GET['email']) ? htmlspecialchars($_GET['email']) : '';
+        $disabled = isset($_GET['email']) ? "disabled" : '';
 
         if (!isset($_SESSION['login'])) {
             echo '
-        <div class="auth">
+        <div class="auth animate__animated animate__fadeIn animate__faster">
             <div class="page-title">
                 <h1>Heureux de vous revoir !</h1>
-                <p>Nous vérifierons que vous avez déjà un compte, et dans le cas contraire, nous vous aiderons à en créer un.</p>
+                <p>Saisissez votre mot de passe pour vous identifier.</p>
             </div>
             <div id="auth-form" class="auth-form">
                 <form action="./?module=auth&action=sendCheck" method="POST">     
                     <label>Adresse e-mail</label>
-                    <input type="email" name="email" id="email" placeholder="steven@exemple.com">
+                    <input type="email" name="email" id="email" placeholder="steven@exemple.com" value="' . $email . '" required '. $disabled .'>
 
-                    <button class="login-button">Continuer</button>
+                    <label>Mot de passe</label>
+                    <input type="password" name="password" id="password" required>
+
+                    <button class="login-button">Se connecter</button>
                 </form>
+            </div>
+            <div class="page-title">
+                <p>Ce n\'est pas vous ? <a href="./?module=auth">Revenir en arrière</a>.</p>
             </div>
         </div>';
         } else {
