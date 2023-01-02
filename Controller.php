@@ -5,6 +5,9 @@ require_once("GenericView.php");
 require_once("Components/CompNav/Comp_Nav.php");
 require_once("Components/CompFooter/Comp_Footer.php");
 
+require_once("Modules/ModAuth/Mod_Auth.php");
+require_once("Modules/ModLanding/Mod_Landing.php");
+
 class Controller
 {
 

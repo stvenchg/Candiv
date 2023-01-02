@@ -13,7 +13,7 @@ class ViewNav extends GenericView
 
     public function nav()
     {
-        $this->view = 'cc';
+        $this->view = '';
     }
 
     public function view()
