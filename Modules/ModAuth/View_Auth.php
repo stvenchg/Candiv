@@ -47,9 +47,9 @@ class ViewAuth extends GenericView
 
         if (!isset($_SESSION['login'])) {
             echo '
-        <div class="auth animate__animated animate__fadeIn animate__faster">
+        <div class="auth animate__animated animate__fadeInRight">
             <div class="page-title">
-                <h1>Créer un compte</h1>
+                <h1>Créez votre compte</h1>
                 <p>Il semblerait que vous n\'ayez pas encore de compte sur Candiv.<br>Merci de renseigner les informations ci-dessous afin de vous inscrire.</p>
             </div>
             <div id="auth-form" class="auth-form">
@@ -95,7 +95,7 @@ class ViewAuth extends GenericView
 
         if (!isset($_SESSION['login'])) {
             echo '
-        <div class="auth animate__animated animate__fadeIn animate__faster">
+        <div class="auth animate__animated animate__fadeInRight">
             <div class="page-title">
                 <h1>Heureux de vous revoir !</h1>
                 <p>Saisissez votre mot de passe pour vous identifier.</p>

@@ -15,4 +15,8 @@ $(document).ready(function () {
             $('#checkButton').removeAttr('disabled');
         }
     });
+
+    $('#checkButton').click(function () {
+        $('.auth').addClass("animate__animated animate__fadeOutLeft");
+    })
 });
