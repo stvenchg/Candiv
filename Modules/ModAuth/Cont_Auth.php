@@ -20,9 +20,24 @@ class ContAuth
         return $this->action;
     }
 
-    // Register
+    // Check if account exist
     public function check() {
         $this->view->form_check();
+    }
+
+    // Check if account exist
+    public function sendCheck() {
+        $this->model->sendCheck();
+    }
+
+    // Login
+    public function login() {
+        $this->view->form_login();
+    }
+
+    // Login
+    public function register() {
+        $this->view->form_register();
     }
 
     public function exec() {

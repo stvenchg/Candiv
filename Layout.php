@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Candiv: Suivi de candidature</title>
+    <title><?php global $title; echo isset($title) ? $title : 'Candiv - Suivi de candidature' ?></title>
     <link rel="stylesheet" href="Assets/css/style.css">
     
     <script

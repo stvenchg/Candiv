@@ -6,6 +6,7 @@ include_once("PDOConnection.php");
 include_once("Controller.php");
 
 $view;
+global $title;
 PDOConnection::initPDO();
 
 $controller = new Controller();
