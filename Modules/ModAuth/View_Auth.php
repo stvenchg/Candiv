@@ -44,16 +44,32 @@ class ViewAuth extends GenericView
         global $title;
         $title ='S\'inscrire sur Candiv';
         $email = isset($_GET['email']) ? htmlspecialchars($_GET['email']) : '';
+        $errorBox = '';
 
         if (!isset($_SESSION['login'])) {
+
+            if (isset($_GET['errors'])) {
+                $errors = htmlspecialchars($_GET['errors']);
+
+                $errorBox = '<div class="error-box">
+                
+                <h1>Merci de corriger les erreurs suivantes : </h1>
+
+                <p>'. $errors .'</p>
+
+                </div>';
+            }
+
             echo '
-        <div class="auth animate__animated animate__fadeInRight">
+        <div class="auth animate__animated animate__fadeInRight animate__faster">
             <div class="page-title">
                 <h1>Créez votre compte</h1>
                 <p>Il semblerait que vous n\'ayez pas encore de compte sur Candiv.<br>Merci de renseigner les informations ci-dessous afin de vous inscrire.</p>
             </div>
+
+            '. $errorBox .'
             <div id="auth-form" class="auth-form">
-                <form action="./?module=auth&action=sendCheck" method="POST">
+                <form id="formRegister" action="./?module=auth&action=sendRegister" method="POST">
 
                     <label>Prénom</label>
                     <input type="text" name="firstname" id="firstname">
@@ -73,7 +89,7 @@ class ViewAuth extends GenericView
                     <label>Confirmation du mot de passe</label>
                     <input type="password" name="confirmpassword" id="confirmpassword">
 
-                    <button class="login-button">Continuer</button>
+                    <button type="submit" class="login-button" id="registerButton">Continuer</button>
                 </form>
             </div>
             <div class="page-title">
@@ -95,20 +111,22 @@ class ViewAuth extends GenericView
 
         if (!isset($_SESSION['login'])) {
             echo '
-        <div class="auth animate__animated animate__fadeInRight">
+        <div class="auth animate__animated animate__fadeInRight animate__faster">
             <div class="page-title">
                 <h1>Heureux de vous revoir !</h1>
                 <p>Saisissez votre mot de passe pour vous identifier.</p>
             </div>
             <div id="auth-form" class="auth-form">
-                <form action="./?module=auth&action=sendCheck" method="POST">     
+                <form id="formLogin" action="./?module=auth&action=sendLogin" method="POST">     
                     <label>Adresse e-mail</label>
                     <input type="email" name="email" id="email" placeholder="steven@exemple.com" value="' . $email . '" required '. $disabled .'>
 
                     <label>Mot de passe</label>
                     <input type="password" name="password" id="password" required>
 
-                    <button class="login-button">Se connecter</button>
+                    <a class="forgot-button" href="">Mot de passe oublié ?</a>
+
+                    <button class="login-button" id="loginButton">Se connecter</button>
                 </form>
             </div>
             <div class="page-title">

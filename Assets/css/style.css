@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
+:root {
+    --main-text-color: #6247AA;
+}
+
 body {
     font-family: 'Roboto', sans-serif;
     margin: 1em;
@@ -83,6 +87,7 @@ label {
     font-weight: 600;
     transition: 0.3s;
     margin-top: 10px;
+    width: 100%;
 }
 
 .login-button:disabled,
@@ -102,5 +107,36 @@ label {
 input:disabled, input[disabled] {
     background-color: rgb(248, 248, 248) !important;
     cursor: default !important;
-    
+
+}
+
+a {
+    color: var(--main-text-color);
+}
+
+.forgot-button {
+    text-align: right;
+    text-decoration: none;
+    color: var(--main-text-color);
+}
+
+.error-box {
+    padding-top:3px;
+    padding-bottom: 3px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    border-left: 5px solid rgb(179, 37, 37);
+    background-color: #f1554d;
+    color: white;
+    border-radius: 4px;
+}
+
+.error-box h1 {
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.error-box p {
+    font-size: 14px;
 }

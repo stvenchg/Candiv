@@ -25,6 +25,9 @@ class ModAuth extends PDOConnection
             case "register":
                 $this->controller->register();
             break;
+            case "sendRegister":
+                $this->controller->sendRegister();
+            break;
         }
 
         $this->controller->exec();

@@ -14,7 +14,6 @@ class ViewLanding extends GenericView
     public function sitePresentation()
     {
 
-        echo '<a href="./?module=auth&action=login">Connexion</a><br>';
-        echo '<a href="./?module=auth&action=register">Inscription</a>';
+        echo '<a href="./?module=auth">Connexion ou inscription</a><br>';
     }
 }
