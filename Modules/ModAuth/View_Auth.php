@@ -108,18 +108,34 @@ class ViewAuth extends GenericView
         $title ='Se connecter sur Candiv';
         $email = isset($_GET['email']) ? htmlspecialchars($_GET['email']) : '';
         $disabled = isset($_GET['email']) ? "disabled" : '';
+        $errorBox = '';
 
         if (!isset($_SESSION['login'])) {
+
+            if (isset($_GET['errors'])) {
+                $errors = htmlspecialchars($_GET['errors']);
+
+                $errorBox = '<div class="error-box">
+                
+                <h1>Merci de corriger les erreurs suivantes : </h1>
+
+                <p>'. $errors .'</p>
+
+                </div>';
+            }
+
             echo '
         <div class="auth animate__animated animate__fadeInRight animate__faster">
             <div class="page-title">
                 <h1>Heureux de vous revoir !</h1>
                 <p>Saisissez votre mot de passe pour vous identifier.</p>
             </div>
+
+            '. $errorBox .'
             <div id="auth-form" class="auth-form">
                 <form id="formLogin" action="./?module=auth&action=sendLogin" method="POST">     
                     <label>Adresse e-mail</label>
-                    <input type="email" name="email" id="email" placeholder="steven@exemple.com" value="' . $email . '" required '. $disabled .'>
+                    <input type="email" name="email" id="email" placeholder="steven@exemple.com" value="' . $email . '" required>
 
                     <label>Mot de passe</label>
                     <input type="password" name="password" id="password" required>

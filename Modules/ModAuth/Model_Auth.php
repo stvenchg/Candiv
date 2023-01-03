@@ -40,6 +40,26 @@ class ModelAuth extends PDOConnection
         }
     }
 
+    public function sendLogin($email, $password)
+    {
+        try {
+            $stmtLogin = parent::$db->prepare("SELECT * FROM accounts WHERE email=:email");
+            $stmtLogin->bindParam(':email', $email);
+            $stmtLogin->execute();
+            $stmtResult = $stmtLogin->fetch();
+
+            if ($stmtResult && password_verify($password, $stmtResult['password'])) {
+                $_SESSION["login"] = $stmtResult['username'];
+                echo 'connexion réussie';
+            } else {
+                echo $stmtResult['password'];
+                echo 'mot de passe incorrect';
+            }
+        } catch (Exception $e) {
+            echo 'Erreur survenue : ',  $e->getMessage(), "\n";
+        }
+    }
+
     public function sendRegister($firstname, $lastname, $username, $email, $password_hashed)
     {
         try {

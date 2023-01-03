@@ -39,6 +39,35 @@ class ContAuth
         $this->view->form_login();
     }
 
+    public function sendLogin()
+    {
+        $email = htmlspecialchars($_POST['email']);
+        $password = htmlspecialchars($_POST['password']);
+
+        $errors = 0;
+        $listErrors = "";
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($email) && isset($password) && !empty($email) && !empty($password)) {
+
+            if (strlen($password) < 8) {
+                $errors++;
+                $listErrors .= "PASSWORD_TOO_SHORT,";
+            }
+
+            if (strlen($email) < 10) {
+                $errors++;
+                $listErrors .= "EMAIL_TOO_SHORT,";
+            }
+
+
+            if ($errors > 0) {
+                header("Location: ./?module=auth&action=login&errors=$listErrors");
+            } else if ($errors == 0) {
+                $this->model->sendLogin($email, $password);
+            }
+        }
+    }
+
     // Register
     public function register()
     {
