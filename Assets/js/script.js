@@ -46,4 +46,9 @@ $(document).ready(function () {
     $('#checkButton').click(function () {
         $('.auth').addClass("animate__animated animate__fadeOutLeft animate__faster");
     })
+
+    $('.nav-hamburger').click(function () {
+        $('.navbar').toggleClass("active");
+        $('main').toggleClass("active");
+    })
 });

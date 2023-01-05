@@ -109,6 +109,7 @@ class ViewAuth extends GenericView
         $email = isset($_GET['email']) ? htmlspecialchars($_GET['email']) : '';
         $disabled = isset($_GET['email']) ? "disabled" : '';
         $errorBox = '';
+        $successBox = '';
 
         if (!isset($_SESSION['login'])) {
 
@@ -124,6 +125,18 @@ class ViewAuth extends GenericView
                 </div>';
             }
 
+            if (isset($_GET['success'])) {
+                $success = htmlspecialchars($_GET['success']);
+
+                $successBox = '<div class="success-box">
+                
+                <h1>Opération réussie</h1>
+
+                <p>'. $success .'</p>
+
+                </div>';
+            }
+
             echo '
         <div class="auth animate__animated animate__fadeInRight animate__faster">
             <div class="page-title">
@@ -131,6 +144,7 @@ class ViewAuth extends GenericView
                 <p>Saisissez votre mot de passe pour vous identifier.</p>
             </div>
 
+            '. $successBox .'
             '. $errorBox .'
             <div id="auth-form" class="auth-form">
                 <form id="formLogin" action="./?module=auth&action=sendLogin" method="POST">     

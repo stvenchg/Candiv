@@ -14,6 +14,6 @@ class ViewLanding extends GenericView
     public function sitePresentation()
     {
 
-        echo '<a href="./?module=auth">Connexion ou inscription</a><br>';
+        echo 'Bienvenue sur Candiv.';
     }
 }

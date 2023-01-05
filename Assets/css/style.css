@@ -2,12 +2,66 @@
 
 :root {
     --main-text-color: #6247AA;
+    --bg-color: rgb(251, 252, 253);
+}
+
+header {
+    height: 80px;
+    background-color: var(--bg-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 100px;
+    margin: auto;
+}
+
+.nav-logo {
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--main-text-color);
+    cursor: pointer;
+}
+
+.nav-logo a {
+    text-decoration: none;
+}
+
+.nav-hamburger {
+    display: none;
+}
+
+.navbar ul {
+    display: flex;
+    list-style-type: none;
+}
+
+.navbar ul li a {
+    display: block;
+    color: var(--main-text-color);
+    font-size: 18px;
+    padding: 10px 25px;
+    border-radius: 50px;
+    transition: 0.2s;
+    margin: 0 5px;
+    text-decoration: none;
+}
+
+.navbar ul li a:hover {
+    background: #E9ECEF;
+}
+
+.navbar ul li a.active {
+    color: #F8F9FA;
+    background: var(--main-text-color);
 }
 
 body {
     font-family: 'Roboto', sans-serif;
-    margin: 1em;
-    background-color: rgb(251, 252, 253);
+    background-color: var(--bg-color);
+    margin: auto;
+}
+
+main {
     width: 80%;
     margin: auto;
 }
@@ -132,11 +186,86 @@ a {
     border-radius: 4px;
 }
 
-.error-box h1 {
+.success-box {
+    padding-top:3px;
+    padding-bottom: 3px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    border-left: 5px solid #1c753a;
+    background-color: #209948;
+    color: white;
+    border-radius: 4px;
+}
+
+.error-box h1, .success-box h1 {
     font-weight: 500;
     font-size: 16px;
 }
 
-.error-box p {
+.error-box p, .success-box p {
     font-size: 14px;
+}
+
+@media only screen and (max-width: 1320px) {
+    header {
+        padding: 0 50px;
+    }
+}
+
+@media only screen and (max-width: 1100px) {
+    header {
+        padding: 0 30px;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .nav-hamburger {
+        display: block;
+        cursor: pointer;
+    }
+
+    .nav-hamburger .line {
+        width: 30px;
+        height: 3px;
+        background-color: var(--main-text-color);
+        margin: 6px 0;
+    }
+
+    .navbar {
+        height: 0;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        right: 0;
+        width: 100%;
+        background-color: rgb(253, 254, 255);
+        transition: 0.2s;
+        overflow: hidden;
+    }
+
+    .navbar.active {
+        height: 450px;
+    }
+
+    .navbar ul {
+        display: block;
+        width: fit-content;
+        margin: 80px auto 0 auto;
+        text-align: center;
+        transition: 0.5s;
+        opacity: 0;
+    }
+
+    .navbar.active ul {
+        opacity: 1;
+    }
+
+    .navbar ul li a {
+        margin-bottom: 12px;
+    }
+
+    main.active {
+        margin-top: 500px;
+    }
 }

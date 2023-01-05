@@ -59,11 +59,15 @@ class ContAuth
                 $listErrors .= "EMAIL_TOO_SHORT,";
             }
 
-
             if ($errors > 0) {
-                header("Location: ./?module=auth&action=login&errors=$listErrors");
+                header("Location: ./?module=auth&action=login&email=$email&errors=$listErrors");
             } else if ($errors == 0) {
-                $this->model->sendLogin($email, $password);
+                if ($this->model->sendLogin($email, $password)) {
+                    $this->model->setSession($email);
+                    header("Location: ./?module=dashboard");
+                } else {
+                    header("Location: ./?module=auth&action=login&email=$email&errors=L'adresse e-mail ou le mot de passe est incorrect.");
+                }
             }
         }
     }
@@ -124,9 +128,15 @@ class ContAuth
             if ($errors > 0) {
                 header("Location: ./?module=auth&action=register&errors=$listErrors");
             } else if ($errors == 0) {
-                $this->model->sendRegister($firstname, $lastname, $username, $email, $password_hashed);
+                if ($this->model->sendRegister($firstname, $lastname, $username, $email, $password_hashed)) {
+                    header("Location: .?module=auth&action=login&email=$email&success=Votre%20inscription%20sur%20Candiv%20a%20bien%20%C3%A9t%C3%A9%20enregistr%C3%A9e.");
+                }
             }
         }
+    }
+
+    public function sendLogout() {
+        $this->model->sendLogout();
     }
 
     public function exec()

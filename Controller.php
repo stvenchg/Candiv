@@ -7,6 +7,7 @@ require_once("Components/CompFooter/Comp_Footer.php");
 
 require_once("Modules/ModAuth/Mod_Auth.php");
 require_once("Modules/ModLanding/Mod_Landing.php");
+require_once("Modules/ModDashboard/Mod_Dashboard.php");
 
 class Controller
 {
@@ -38,6 +39,9 @@ class Controller
             break;
             case 'auth':
                 new ModAuth();
+            break;
+            case 'dashboard':
+                new ModDashboard();
             break;
             default :
                 die("Le module demandé n'existe pas.");
