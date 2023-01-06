@@ -34,7 +34,7 @@ class ViewAuth extends GenericView
             </div>
         </div>';
         } else {
-            echo "Already connected!";
+            header("Location: ./?module=dashboard");
         }
     }
 
@@ -97,7 +97,7 @@ class ViewAuth extends GenericView
             </div>
         </div>';
         } else {
-            echo "Already connected!";
+            header("Location: ./?module=dashboard");
         }
     }
 
@@ -164,7 +164,7 @@ class ViewAuth extends GenericView
             </div>
         </div>';
         } else {
-            echo "Already connected!";
+            header("Location: ./?module=dashboard");
         }
     }
 }

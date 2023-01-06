@@ -17,7 +17,15 @@ class ContNav
 
     public function exec()
     {
-        $this->view->nav();
+
+        // Must be moved into correct class
+        if (isset($_SESSION['login'])) {
+            $this->view->nav_logged();
+        }
+        else {
+            $this->view->nav_default();
+        }
+
         $this->view->view();
     }
 }

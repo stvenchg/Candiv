@@ -14,7 +14,13 @@ class ViewDashboard extends GenericView
     public function view_home()
     {
         if (isset($_SESSION['login'])) {
-            echo 'Page uniquement accessible si connecté. <a href="./?module=auth&action=sendLogout">Se déconnecter<a/>';
+
+            global $title;
+            $title ='Tableau de bord - Candiv';
+
+            echo '<h1>Bonjour, '. 'Steven' .' !</h1>
+            
+            <p>Vous retrouverez ici les statistiques liées à vos candidatures et votre utilisation de Candiv.</p>';
         }
     }
 }
