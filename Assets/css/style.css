@@ -53,12 +53,13 @@ header {
 }
 
 .navbar ul li a:hover {
-    background: rgba(243, 243, 243, 0.89);
+    background-color: rgb(228, 228, 228);;
 }
 
 .navbar ul li a.active {
-    color: #fffbff;
-    background: var(--main-text-color);
+    color: var(--bg-color);
+    font-weight: 500;
+    background-color: var(--main-text-color);
 }
 
 .account-button {
@@ -114,14 +115,14 @@ main {
     gap: 10px;
 }
 
-.auth-form form input {
+input {
     position: relative;
     display: flex;
     width: 100%;
     align-items: stretch;
     box-sizing: border-box;
     height: 40px;
-    border-radius: 4px;
+    border-radius: 20px;
     color: #0d1216;
     border: 1px solid;
     border-color: rgba(43,59,74,0.3);
@@ -136,6 +137,31 @@ label {
     text-align: left;
     font-size: 13px;
     font-weight: 500;
+}
+
+.button {
+    border: 2px solid transparent;
+    box-sizing: border-box;
+    border-radius: 50px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    height: 45px;
+    max-width: 100%;
+    min-width: 80px;
+    padding: 0 6px;
+    vertical-align: middle;
+    align-items: center;
+    justify-content: center;
+    background-color: #6247AA;
+    font-weight: 600;
+    transition: 0.3s;
+    font-size: 16px;
+    padding: 10px 25px;
+}
+
+.button i {
+    margin-right: 10px;
 }
 
 .login-button {
@@ -159,17 +185,17 @@ label {
     width: 100%;
 }
 
-.login-button:disabled,
-.login-button[disabled]{
+.button:disabled,
+.button[disabled]{
     background-color: #9163CB;
 }
 
-.login-button:disabled:hover,
-.login-button[disabled]:hover{
+.button:disabled:hover,
+.button[disabled]:hover{
     background-color: #9163CB;
 }
 
-.login-button:hover, .navbar ul li a.active:hover {
+.button:hover, .navbar ul li a.active:hover {
     background-color: #7251B5;
 }
 
@@ -244,6 +270,131 @@ a {
     display: none;
 }
 
+.main-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.application-list {
+    width: 100%;
+    overflow: auto;
+    background-color: #fff;
+    border-radius: 10px;
+    margin: auto;
+}
+
+.application-list img {
+    width: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+    margin-top: 10px;
+}
+
+.application-list h5 {
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.application-list p {
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.application-list .enterprise {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: start;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+tr {
+    border-bottom: 1px solid #eef0f3;
+}
+
+tr:last-child {
+    border-bottom: none;
+}
+
+thead td {
+    font-size: 16px;
+    font-weight: 600;
+    background-color: rgb(248, 248, 248);
+    text-align: start;
+    padding: 15px;
+}
+
+tbody tr td {
+    padding: 10px 15px;
+    line-height: 1px;
+}
+
+.status {
+    color: white;
+    padding: 5px 10px;
+    display: inline-block;
+    border-radius: 20px;
+    line-height: 20px;
+}
+
+.status.sent {
+    background-color: #6147aa96;
+}
+
+.status.accept {
+    background-color: #5fb85c;
+}
+
+.status.again {
+    background-color: #e0a245;
+}
+
+.status.rejected {
+    background-color: #e77d6f;
+}
+
+.pill-button {
+    border-radius: 50px;
+    width: 40px;
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    height: 40px;
+    vertical-align: middle;
+    align-items: center;
+    justify-content: center;
+    background-color: #6147aad3;
+    font-weight: 600;
+    transition: 0.3s;
+    margin-top: 10px;
+    border: none;
+}
+
+.pill-button:hover {
+    background-color: var(--main-text-color);
+}
+
+.pill-button.info:hover {
+    background-color: #6147aa71;
+}
+
+.pill-button.info {
+    background-color: #6147aa3a;
+}
+
+.application-list .action div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    
+}
+
 @media only screen and (max-width: 1320px) {
     header {
         padding: 0 50px;
@@ -257,6 +408,14 @@ a {
 }
 
 @media only screen and (max-width: 1045px) {
+    header {
+        width: 90%;
+    }
+
+    main {
+        width: 90%;
+    }
+    
     .nav-hamburger {
         display: block;
         cursor: pointer;
