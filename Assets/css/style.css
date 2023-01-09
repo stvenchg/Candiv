@@ -6,6 +6,23 @@
     --read-color: #495057;
 }
 
+::-webkit-scrollbar {
+    width: 0.5em
+}
+
+::-webkit-scrollbar-track {
+    background: rgb(241, 241, 241);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(228, 228, 228);
+    border-radius: 100vw;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--main-text-color);
+}
+
 header {
     height: 80px;
     background-color: var(--bg-color);
@@ -53,7 +70,7 @@ header {
 }
 
 .navbar ul li a:hover {
-    background-color: rgb(228, 228, 228);;
+    background-color: rgb(228, 228, 228);
 }
 
 .navbar ul li a.active {
@@ -274,6 +291,35 @@ a {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 50px;
+}
+
+.main-top div {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.main-top div div input {
+    height: 45px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 0;
+    background-color: transparent;
+    outline: none;
+    
+}
+
+.main-top div div input:focus, .main-top div div input:active {
+    border: none !important;
+}
+
+.application-searchbar {
+    background-color: rgb(241, 241, 241);
+    border-radius: 50px;
+    height: 45px;
+    width: 400px;
+    padding-left: 20px;
 }
 
 .application-list {
@@ -282,6 +328,7 @@ a {
     background-color: #fff;
     border-radius: 10px;
     margin: auto;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
 
 .application-list img {
@@ -309,6 +356,14 @@ a {
     text-align: start;
 }
 
+.application-note p {
+    max-width: 300px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 20px;
+}
+
 table {
     border-collapse: collapse;
 }
@@ -324,13 +379,13 @@ tr:last-child {
 thead td {
     font-size: 16px;
     font-weight: 600;
-    background-color: rgb(248, 248, 248);
+    background-color: rgb(241, 241, 241);
     text-align: start;
-    padding: 15px;
+    padding: 20px;
 }
 
 tbody tr td {
-    padding: 10px 15px;
+    padding: 10px 20px;
     line-height: 1px;
 }
 
@@ -340,6 +395,8 @@ tbody tr td {
     display: inline-block;
     border-radius: 20px;
     line-height: 20px;
+    font-weight: 600;
+    cursor: pointer;
 }
 
 .status.sent {
@@ -393,6 +450,59 @@ tbody tr td {
     justify-content: center;
     gap: 10px;
     
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.filters-box {
+    margin-bottom: 20px;
+    width: 100%;
+    overflow: auto;
+    height: 50px;
+}
+
+.filters-box nav ul {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: -10px;
+    list-style-type: none;
+    gap: 20px;
+}
+
+.filters-box nav ul:first-child {
+    margin-left: -40px;
+}
+
+.filters-box nav ul li {
+    cursor: pointer;
+}
+
+.filters-box nav ul li span {
+    display: inline-block;
+    padding-right: 30px;
+    padding-bottom: 10px;
+    padding-left: 30px;
+    border-bottom: 4px solid #efefef;
+    color: #777;
+    text-decoration: none;
+    transition: .25s;
+}
+
+.filters-box nav ul li span:focus,
+.filters-box nav ul li span:hover {
+  border-bottom-color: currentColor;
+  color: var(--main-text-color);
+  opacity: .75;
+}
+
+.filters-box nav ul li span.active {
+    border-bottom-color: currentColor;
+    color: var(--main-text-color);
+    pointer-events: none;
 }
 
 @media only screen and (max-width: 1320px) {
